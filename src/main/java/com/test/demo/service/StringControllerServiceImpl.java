@@ -1,12 +1,17 @@
 package com.test.demo.service;
 
-import com.test.demo.dto.EntryDto;
+import com.test.demo.aop.AopAnnotation;
+import
 import com.test.demo.entity.StringDataEntity;
 import com.test.demo.repo.StringRepo;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
+@Data
 public class StringControllerServiceImpl implements StringControllerService {
 
     StringRepo stringRepo;
@@ -17,9 +22,10 @@ public class StringControllerServiceImpl implements StringControllerService {
     }
 
     @Override
-    public void saveString(EntryDto entryString) {
+    @com.example.starter.aop.AopAnnotation
+    public void saveString(List<String> entryString) {
         StringDataEntity data = new StringDataEntity();
-        data.setValue(entryString.getValue().toString());
+        data.setValue(entryString.toString());
         stringRepo.save(data);
     }
 }

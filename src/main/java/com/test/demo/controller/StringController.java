@@ -1,5 +1,6 @@
 package com.test.demo.controller;
 
+
 import com.test.demo.dto.EntryDto;
 import com.test.demo.service.StringControllerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,7 @@ public class StringController {
     @PostMapping
     public ResponseEntity getController (@RequestBody EntryDto entryStr ){
         List <String> entry = entryStr.getValue();
-        controllerService.saveString(entryStr);
-
+        controllerService.saveString(entry);
         return new ResponseEntity<>( HttpStatus.OK);
     }
 }
